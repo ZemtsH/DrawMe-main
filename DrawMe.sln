@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawMe", "DrawMe\DrawMe.csproj", "{168935F2-4BBA-41D1-8F27-278FAEA0025F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawMeTests", "DrawingTest\DrawMeTests.csproj", "{892395E9-6FAA-4670-9221-26B6DFCDB6FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{168935F2-4BBA-41D1-8F27-278FAEA0025F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{168935F2-4BBA-41D1-8F27-278FAEA0025F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{168935F2-4BBA-41D1-8F27-278FAEA0025F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{168935F2-4BBA-41D1-8F27-278FAEA0025F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{892395E9-6FAA-4670-9221-26B6DFCDB6FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{892395E9-6FAA-4670-9221-26B6DFCDB6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{892395E9-6FAA-4670-9221-26B6DFCDB6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{892395E9-6FAA-4670-9221-26B6DFCDB6FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34D46BA3-235B-49F1-BF27-38FA161B9296}
+	EndGlobalSection
+EndGlobal
