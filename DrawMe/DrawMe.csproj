@@ -55,13 +55,16 @@
     <Compile Include="Factory\IFactory.cs" />
     <Compile Include="Factory\IsoscelesTraingleFactory.cs" />
     <Compile Include="Factory\LineFactory.cs" />
+    <Compile Include="Factory\RectangleFactory.cs" />
     <Compile Include="Factory\RightTraingleFactory.cs" />
+    <Compile Include="Factory\SquareFactory.cs" />
     <Compile Include="Figures\AbstractFigure.cs" />
     <Compile Include="Figures\BrushFigure.cs" />
     <Compile Include="Figures\LineFigure.cs" />
     <Compile Include="Figures\RectangleFigure.cs" />
     <Compile Include="Figures\IsoscelesTraingleFigure.cs" />
     <Compile Include="Figures\RightTraingle.cs" />
+    <Compile Include="Figures\SquareFigure.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

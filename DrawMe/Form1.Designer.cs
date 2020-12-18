@@ -64,9 +64,10 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Location = new System.Drawing.Point(355, 121);
+            this.pictureBox1.Location = new System.Drawing.Point(399, 151);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1013, 655);
+            this.pictureBox1.Size = new System.Drawing.Size(1140, 819);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
@@ -75,9 +76,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 121);
+            this.button1.Location = new System.Drawing.Point(14, 151);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(192, 49);
+            this.button1.Size = new System.Drawing.Size(216, 61);
             this.button1.TabIndex = 1;
             this.button1.Text = "Кисть";
             this.button1.UseVisualStyleBackColor = true;
@@ -85,9 +87,10 @@
             // 
             // line
             // 
-            this.line.Location = new System.Drawing.Point(12, 176);
+            this.line.Location = new System.Drawing.Point(14, 220);
+            this.line.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.line.Name = "line";
-            this.line.Size = new System.Drawing.Size(192, 49);
+            this.line.Size = new System.Drawing.Size(216, 61);
             this.line.TabIndex = 2;
             this.line.Text = "Линия";
             this.line.UseVisualStyleBackColor = true;
@@ -95,18 +98,20 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 231);
+            this.button3.Location = new System.Drawing.Point(14, 289);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(192, 49);
+            this.button3.Size = new System.Drawing.Size(216, 61);
             this.button3.TabIndex = 3;
             this.button3.Text = "Ломанная";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(12, 286);
+            this.button4.Location = new System.Drawing.Point(14, 358);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(192, 49);
+            this.button4.Size = new System.Drawing.Size(216, 61);
             this.button4.TabIndex = 4;
             this.button4.Text = "Прямоугольник";
             this.button4.UseVisualStyleBackColor = true;
@@ -114,45 +119,51 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(12, 341);
+            this.button5.Location = new System.Drawing.Point(14, 426);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(192, 49);
+            this.button5.Size = new System.Drawing.Size(216, 61);
             this.button5.TabIndex = 5;
             this.button5.Text = "Квадрат";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(12, 396);
+            this.button6.Location = new System.Drawing.Point(14, 495);
+            this.button6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(192, 49);
+            this.button6.Size = new System.Drawing.Size(216, 61);
             this.button6.TabIndex = 6;
             this.button6.Text = "Окружность";
             this.button6.UseVisualStyleBackColor = true;
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(12, 451);
+            this.button7.Location = new System.Drawing.Point(14, 564);
+            this.button7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(192, 49);
+            this.button7.Size = new System.Drawing.Size(216, 61);
             this.button7.TabIndex = 7;
             this.button7.Text = "Эллипс";
             this.button7.UseVisualStyleBackColor = true;
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(12, 506);
+            this.button8.Location = new System.Drawing.Point(14, 632);
+            this.button8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(192, 49);
+            this.button8.Size = new System.Drawing.Size(216, 61);
             this.button8.TabIndex = 8;
             this.button8.Text = "Треугольник по трем";
             this.button8.UseVisualStyleBackColor = true;
             // 
             // rightTraingle
             // 
-            this.rightTraingle.Location = new System.Drawing.Point(12, 562);
+            this.rightTraingle.Location = new System.Drawing.Point(14, 702);
+            this.rightTraingle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rightTraingle.Name = "rightTraingle";
-            this.rightTraingle.Size = new System.Drawing.Size(192, 49);
+            this.rightTraingle.Size = new System.Drawing.Size(216, 61);
             this.rightTraingle.TabIndex = 9;
             this.rightTraingle.Text = "Треугольник 90";
             this.rightTraingle.UseVisualStyleBackColor = true;
@@ -160,9 +171,10 @@
             // 
             // isoscelesTraingle
             // 
-            this.isoscelesTraingle.Location = new System.Drawing.Point(12, 617);
+            this.isoscelesTraingle.Location = new System.Drawing.Point(14, 771);
+            this.isoscelesTraingle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.isoscelesTraingle.Name = "isoscelesTraingle";
-            this.isoscelesTraingle.Size = new System.Drawing.Size(192, 49);
+            this.isoscelesTraingle.Size = new System.Drawing.Size(216, 61);
             this.isoscelesTraingle.TabIndex = 10;
             this.isoscelesTraingle.Text = "Равнобедренный";
             this.isoscelesTraingle.UseVisualStyleBackColor = true;
@@ -170,9 +182,10 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(12, 672);
+            this.button11.Location = new System.Drawing.Point(14, 840);
+            this.button11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(192, 49);
+            this.button11.Size = new System.Drawing.Size(216, 61);
             this.button11.TabIndex = 11;
             this.button11.Text = "N-угольник";
             this.button11.UseVisualStyleBackColor = true;
@@ -180,9 +193,10 @@
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(12, 727);
+            this.button12.Location = new System.Drawing.Point(14, 909);
+            this.button12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(192, 49);
+            this.button12.Size = new System.Drawing.Size(216, 61);
             this.button12.TabIndex = 12;
             this.button12.Text = "Правильный N-угольник";
             this.button12.UseVisualStyleBackColor = true;
@@ -190,9 +204,10 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(225, 632);
+            this.checkBox1.Location = new System.Drawing.Point(253, 790);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(98, 21);
+            this.checkBox1.Size = new System.Drawing.Size(113, 24);
             this.checkBox1.TabIndex = 13;
             this.checkBox1.Text = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -215,9 +230,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 42);
+            this.label1.Location = new System.Drawing.Point(14, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(277, 29);
+            this.label1.Size = new System.Drawing.Size(345, 36);
             this.label1.TabIndex = 15;
             this.label1.Text = "Панель инструментов:";
             // 
@@ -321,7 +336,7 @@
             0,
             0});
             this.widthBox.Name = "widthBox";
-            this.widthBox.Size = new System.Drawing.Size(48, 22);
+            this.widthBox.Size = new System.Drawing.Size(54, 26);
             this.widthBox.TabIndex = 25;
             this.widthBox.Value = new decimal(new int[] {
             1,
@@ -332,9 +347,10 @@
             // 
             // mover
             // 
-            this.mover.Location = new System.Drawing.Point(355, 42);
+            this.mover.Location = new System.Drawing.Point(399, 52);
+            this.mover.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.mover.Name = "mover";
-            this.mover.Size = new System.Drawing.Size(192, 49);
+            this.mover.Size = new System.Drawing.Size(216, 61);
             this.mover.TabIndex = 26;
             this.mover.Text = "Двигай";
             this.mover.UseVisualStyleBackColor = true;
@@ -342,18 +358,20 @@
             // 
             // rotate
             // 
-            this.rotate.Location = new System.Drawing.Point(576, 42);
+            this.rotate.Location = new System.Drawing.Point(648, 52);
+            this.rotate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rotate.Name = "rotate";
-            this.rotate.Size = new System.Drawing.Size(192, 49);
+            this.rotate.Size = new System.Drawing.Size(216, 61);
             this.rotate.TabIndex = 27;
             this.rotate.Text = "Вращай";
             this.rotate.UseVisualStyleBackColor = true;
             // 
             // changeColor
             // 
-            this.changeColor.Location = new System.Drawing.Point(793, 42);
+            this.changeColor.Location = new System.Drawing.Point(892, 52);
+            this.changeColor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.changeColor.Name = "changeColor";
-            this.changeColor.Size = new System.Drawing.Size(192, 49);
+            this.changeColor.Size = new System.Drawing.Size(216, 61);
             this.changeColor.TabIndex = 28;
             this.changeColor.Text = "Меняй цвет";
             this.changeColor.UseVisualStyleBackColor = true;
@@ -361,10 +379,10 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(1238, 638);
+            this.ClientSize = new System.Drawing.Size(1393, 798);
             this.Controls.Add(this.changeColor);
             this.Controls.Add(this.rotate);
             this.Controls.Add(this.mover);
@@ -394,6 +412,7 @@
             this.Controls.Add(this.line);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
