@@ -44,15 +44,15 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.clear = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.red = new System.Windows.Forms.Button();
-            this.green = new System.Windows.Forms.Button();
-            this.purple = new System.Windows.Forms.Button();
-            this.orange = new System.Windows.Forms.Button();
-            this.blue = new System.Windows.Forms.Button();
-            this.darkBlue = new System.Windows.Forms.Button();
-            this.yellow = new System.Windows.Forms.Button();
-            this.black = new System.Windows.Forms.Button();
+            this.whiteSmoke = new System.Windows.Forms.Button();
+            this.silver = new System.Windows.Forms.Button();
+            this.dimGray = new System.Windows.Forms.Button();
+            this.gainsboro = new System.Windows.Forms.Button();
+            this.darkGray = new System.Windows.Forms.Button();
+            this.gray = new System.Windows.Forms.Button();
+            this.lightGray = new System.Windows.Forms.Button();
             this.white = new System.Windows.Forms.Button();
+            this.black = new System.Windows.Forms.Button();
             this.widthBox = new System.Windows.Forms.NumericUpDown();
             this.mover = new System.Windows.Forms.Button();
             this.rotate = new System.Windows.Forms.Button();
@@ -200,13 +200,15 @@
             // 
             // clear
             // 
-            this.clear.Location = new System.Drawing.Point(237, 121);
+            this.clear.BackColor = System.Drawing.Color.HotPink;
+            this.clear.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.clear.Location = new System.Drawing.Point(1081, 31);
             this.clear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.clear.Name = "clear";
-            this.clear.Size = new System.Drawing.Size(100, 39);
+            this.clear.Size = new System.Drawing.Size(145, 59);
             this.clear.TabIndex = 14;
-            this.clear.Text = "Очистить форму";
-            this.clear.UseVisualStyleBackColor = true;
+            this.clear.Text = "Начини всё с чистого листа";
+            this.clear.UseVisualStyleBackColor = false;
             this.clear.Click += new System.EventHandler(this.clear_Click);
             // 
             // label1
@@ -219,91 +221,99 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Панель инструментов:";
             // 
-            // red
+            // whiteSmoke
             // 
-            this.red.BackColor = System.Drawing.Color.Red;
-            this.red.Location = new System.Drawing.Point(285, 176);
-            this.red.Name = "red";
-            this.red.Size = new System.Drawing.Size(52, 49);
-            this.red.TabIndex = 16;
-            this.red.UseVisualStyleBackColor = false;
+            this.whiteSmoke.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.whiteSmoke.Location = new System.Drawing.Point(285, 176);
+            this.whiteSmoke.Name = "whiteSmoke";
+            this.whiteSmoke.Size = new System.Drawing.Size(52, 49);
+            this.whiteSmoke.TabIndex = 16;
+            this.whiteSmoke.UseVisualStyleBackColor = false;
+            this.whiteSmoke.Click += new System.EventHandler(this.whiteSmoke_Click);
             // 
-            // green
+            // silver
             // 
-            this.green.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.green.Location = new System.Drawing.Point(285, 341);
-            this.green.Name = "green";
-            this.green.Size = new System.Drawing.Size(52, 49);
-            this.green.TabIndex = 17;
-            this.green.UseVisualStyleBackColor = false;
+            this.silver.BackColor = System.Drawing.Color.Silver;
+            this.silver.Location = new System.Drawing.Point(285, 341);
+            this.silver.Name = "silver";
+            this.silver.Size = new System.Drawing.Size(52, 49);
+            this.silver.TabIndex = 17;
+            this.silver.UseVisualStyleBackColor = false;
+            this.silver.Click += new System.EventHandler(this.silver_Click);
             // 
-            // purple
+            // dimGray
             // 
-            this.purple.BackColor = System.Drawing.Color.Purple;
-            this.purple.Location = new System.Drawing.Point(285, 506);
-            this.purple.Name = "purple";
-            this.purple.Size = new System.Drawing.Size(52, 49);
-            this.purple.TabIndex = 18;
-            this.purple.UseVisualStyleBackColor = false;
-            this.purple.Click += new System.EventHandler(this.purple_Click);
+            this.dimGray.BackColor = System.Drawing.Color.DimGray;
+            this.dimGray.Location = new System.Drawing.Point(285, 506);
+            this.dimGray.Name = "dimGray";
+            this.dimGray.Size = new System.Drawing.Size(52, 49);
+            this.dimGray.TabIndex = 18;
+            this.dimGray.UseVisualStyleBackColor = false;
+            this.dimGray.Click += new System.EventHandler(this.dimGray_Click);
             // 
-            // orange
+            // gainsboro
             // 
-            this.orange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.orange.Location = new System.Drawing.Point(285, 231);
-            this.orange.Name = "orange";
-            this.orange.Size = new System.Drawing.Size(52, 49);
-            this.orange.TabIndex = 19;
-            this.orange.UseVisualStyleBackColor = false;
+            this.gainsboro.BackColor = System.Drawing.Color.Gainsboro;
+            this.gainsboro.Location = new System.Drawing.Point(285, 231);
+            this.gainsboro.Name = "gainsboro";
+            this.gainsboro.Size = new System.Drawing.Size(52, 49);
+            this.gainsboro.TabIndex = 19;
+            this.gainsboro.UseVisualStyleBackColor = false;
+            this.gainsboro.Click += new System.EventHandler(this.gainsboro_Click);
             // 
-            // blue
+            // darkGray
             // 
-            this.blue.BackColor = System.Drawing.Color.Aqua;
-            this.blue.Location = new System.Drawing.Point(285, 396);
-            this.blue.Name = "blue";
-            this.blue.Size = new System.Drawing.Size(52, 49);
-            this.blue.TabIndex = 20;
-            this.blue.UseVisualStyleBackColor = false;
+            this.darkGray.BackColor = System.Drawing.Color.DarkGray;
+            this.darkGray.Location = new System.Drawing.Point(285, 396);
+            this.darkGray.Name = "darkGray";
+            this.darkGray.Size = new System.Drawing.Size(52, 49);
+            this.darkGray.TabIndex = 20;
+            this.darkGray.UseVisualStyleBackColor = false;
+            this.darkGray.Click += new System.EventHandler(this.darkGray_Click);
             // 
-            // darkBlue
+            // gray
             // 
-            this.darkBlue.BackColor = System.Drawing.Color.Blue;
-            this.darkBlue.Location = new System.Drawing.Point(285, 451);
-            this.darkBlue.Name = "darkBlue";
-            this.darkBlue.Size = new System.Drawing.Size(52, 49);
-            this.darkBlue.TabIndex = 21;
-            this.darkBlue.UseVisualStyleBackColor = false;
+            this.gray.BackColor = System.Drawing.Color.Gray;
+            this.gray.Location = new System.Drawing.Point(285, 451);
+            this.gray.Name = "gray";
+            this.gray.Size = new System.Drawing.Size(52, 49);
+            this.gray.TabIndex = 21;
+            this.gray.UseVisualStyleBackColor = false;
+            this.gray.Click += new System.EventHandler(this.gray_Click);
             // 
-            // yellow
+            // lightGray
             // 
-            this.yellow.BackColor = System.Drawing.Color.Yellow;
-            this.yellow.Location = new System.Drawing.Point(285, 286);
-            this.yellow.Name = "yellow";
-            this.yellow.Size = new System.Drawing.Size(52, 49);
-            this.yellow.TabIndex = 22;
-            this.yellow.UseVisualStyleBackColor = false;
-            // 
-            // black
-            // 
-            this.black.BackColor = System.Drawing.Color.Black;
-            this.black.Location = new System.Drawing.Point(227, 562);
-            this.black.Name = "black";
-            this.black.Size = new System.Drawing.Size(52, 49);
-            this.black.TabIndex = 23;
-            this.black.UseVisualStyleBackColor = false;
+            this.lightGray.BackColor = System.Drawing.Color.LightGray;
+            this.lightGray.Location = new System.Drawing.Point(285, 286);
+            this.lightGray.Name = "lightGray";
+            this.lightGray.Size = new System.Drawing.Size(52, 49);
+            this.lightGray.TabIndex = 22;
+            this.lightGray.UseVisualStyleBackColor = false;
+            this.lightGray.Click += new System.EventHandler(this.lightGray_Click);
             // 
             // white
             // 
             this.white.BackColor = System.Drawing.Color.White;
-            this.white.Location = new System.Drawing.Point(285, 562);
+            this.white.Location = new System.Drawing.Point(227, 562);
             this.white.Name = "white";
             this.white.Size = new System.Drawing.Size(52, 49);
-            this.white.TabIndex = 24;
+            this.white.TabIndex = 23;
             this.white.UseVisualStyleBackColor = false;
+            this.white.Click += new System.EventHandler(this.white_Click);
+            // 
+            // black
+            // 
+            this.black.BackColor = System.Drawing.Color.Black;
+            this.black.Location = new System.Drawing.Point(285, 562);
+            this.black.Name = "black";
+            this.black.Size = new System.Drawing.Size(52, 49);
+            this.black.TabIndex = 24;
+            this.black.UseVisualStyleBackColor = false;
+            this.black.Click += new System.EventHandler(this.black_Click);
             // 
             // widthBox
             // 
-            this.widthBox.Location = new System.Drawing.Point(237, 176);
+            this.widthBox.Location = new System.Drawing.Point(285, 121);
             this.widthBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.widthBox.Minimum = new decimal(new int[] {
             1,
@@ -359,15 +369,15 @@
             this.Controls.Add(this.rotate);
             this.Controls.Add(this.mover);
             this.Controls.Add(this.widthBox);
-            this.Controls.Add(this.white);
             this.Controls.Add(this.black);
-            this.Controls.Add(this.yellow);
-            this.Controls.Add(this.darkBlue);
-            this.Controls.Add(this.blue);
-            this.Controls.Add(this.orange);
-            this.Controls.Add(this.purple);
-            this.Controls.Add(this.green);
-            this.Controls.Add(this.red);
+            this.Controls.Add(this.white);
+            this.Controls.Add(this.lightGray);
+            this.Controls.Add(this.gray);
+            this.Controls.Add(this.darkGray);
+            this.Controls.Add(this.gainsboro);
+            this.Controls.Add(this.dimGray);
+            this.Controls.Add(this.silver);
+            this.Controls.Add(this.whiteSmoke);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.clear);
             this.Controls.Add(this.checkBox1);
@@ -412,15 +422,15 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button clear;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button red;
-        private System.Windows.Forms.Button green;
-        private System.Windows.Forms.Button purple;
-        private System.Windows.Forms.Button orange;
-        private System.Windows.Forms.Button blue;
-        private System.Windows.Forms.Button darkBlue;
-        private System.Windows.Forms.Button yellow;
-        private System.Windows.Forms.Button black;
+        private System.Windows.Forms.Button whiteSmoke;
+        private System.Windows.Forms.Button silver;
+        private System.Windows.Forms.Button dimGray;
+        private System.Windows.Forms.Button gainsboro;
+        private System.Windows.Forms.Button darkGray;
+        private System.Windows.Forms.Button gray;
+        private System.Windows.Forms.Button lightGray;
         private System.Windows.Forms.Button white;
+        private System.Windows.Forms.Button black;
         private System.Windows.Forms.NumericUpDown widthBox;
         private System.Windows.Forms.Button mover;
         private System.Windows.Forms.Button rotate;

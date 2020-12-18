@@ -95,8 +95,7 @@ namespace DrawMe
                             _crntFigure = figure;
                             _figures.Remove(_crntFigure);
                             DrawAll();
-                            //action = "Draw";
-                    _crntFigure.DoStart(e.Location);
+                            _crntFigure.DoStart(e.Location);
                             break;
                         }
                     }
@@ -118,13 +117,9 @@ namespace DrawMe
 
             foreach (AbstractFigure figure in _figures)
             {
-                
-                //_crntFigure.Color = figure.Color;
-                //_crntFigure.Width = figure.Width;
                 Canvas.Instanse.SetBitmap(_crntFigure.drawing.DrawFigure(figure.Color, figure.Width, figure.Points.ToArray()));
                 
             }
-            //pictureBox1.Image = Canvas.Instanse.GetTempBitmap();
 
         }
 
@@ -152,10 +147,7 @@ namespace DrawMe
 
         }
 
-        private void purple_Click(object sender, EventArgs e)
-        {
-            _crntColor = Color.Purple;
-        }
+        
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -206,6 +198,51 @@ namespace DrawMe
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+        // Color
+        private void whiteSmoke_Click(object sender, EventArgs e)
+        {
+            _crntColor = Color.WhiteSmoke;
+        }
+
+        private void gainsboro_Click(object sender, EventArgs e)
+        {
+            _crntColor = Color.Gainsboro;
+        }
+
+        private void lightGray_Click(object sender, EventArgs e)
+        {
+            _crntColor = Color.LightGray;
+        }
+
+        private void silver_Click(object sender, EventArgs e)
+        {
+            _crntColor = Color.Silver;
+        }
+
+        private void darkGray_Click(object sender, EventArgs e)
+        {
+            _crntColor = Color.DarkGray;
+        }
+
+        private void gray_Click(object sender, EventArgs e)
+        {
+            _crntColor = Color.Gray;
+        }
+
+        private void dimGray_Click(object sender, EventArgs e)
+        {
+            _crntColor = Color.DimGray;
+        }
+
+        private void black_Click(object sender, EventArgs e)
+        {
+            _crntColor = Color.Black;
+        }
+
+        private void white_Click(object sender, EventArgs e)
+        {
+            _crntColor = Color.White;
         }
     }
 }
