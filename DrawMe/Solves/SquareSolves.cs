@@ -11,35 +11,20 @@ namespace DrawMe.Solves
     {
         public Point[] DoPoint(Point[] points)
         {
-            int del1, del2;
-            del1 = points[0].X - points[1].X;
-            del2 = points[0].Y - points[1].Y;
-
-            if (del1 > del2 && del1 == del2)
-            {
-                Point a, b, c;
-
-                b = new Point(points[0].X, points[1].Y+del1);
-
-                a = new Point(points[1].X+del1, points[0].Y);
-
-                c = new Point(points[0].X + del1, points[0].Y + del1);
+            Point a, b, c;
+            int del = points[1].X - points[0].X;
 
 
-                return new Point[] { points[0], a, c , b };
-            }
-            else {
-                Point a, b, c;
 
-                b = new Point(points[0].X, points[1].Y + del2);
+            a = new Point(points[1].X - points[0].X, points[1].Y);
 
-                a = new Point(points[1].X + del2, points[0].Y);
+            b = new Point(points[1].X, points[1].Y);
 
-                c = new Point(points[0].X + del2, points[0].Y + del2);
+            c = new Point(points[0].X + del, points[0].Y + del);
 
 
-                return new Point[] { points[0], a, c, b };
-            }
+            return new Point[] { points[0], a, b, c };
+
         }
     }
 }
