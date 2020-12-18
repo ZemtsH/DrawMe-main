@@ -1,4 +1,5 @@
 ﻿using DrawMe.Drawing;
+using DrawMe.NewFolder1;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -14,7 +15,8 @@ namespace DrawMe.Figures
         public int Width { get; set; }
         public List<Point> Points { get; set; }
         public IDrawing drawing;
-        public ISolves solves;
+        protected ISolves solves;
+        public IMover Mover;
 
         public bool CheckDraw()
         {
@@ -53,23 +55,23 @@ namespace DrawMe.Figures
                 Point i = Points[p];
                 Points[p] = new Point(i.X + delta.X, i.Y + delta.Y);
             }
-            return drawing.DrawFigure(Color, Width, Points.ToArray());
+            return Mover.MoveFigure(Color, Width, Points.ToArray());
         }
 
-        public void ChangeColor(Color color, Bitmap mainBM)
+        public void ChangeColor(Color color)
         {
             Color = color;
-            drawing.DrawFigure(Color, Width, Points.ToArray());
-        }
-
-        public Bitmap ShowBit()
-        {
-            return drawing.crntBit;
+            Mover.MoveFigure(Color, Width, Points.ToArray());
         }
 
         public void DoStart(Point startPoint)
         {
             drawing.startPoint = startPoint;
+        }
+
+        public void DoStartM(Point startPoint)
+        {
+            Mover.startPoint = startPoint;
         }
 
 

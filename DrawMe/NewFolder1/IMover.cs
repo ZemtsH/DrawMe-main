@@ -5,12 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DrawMe.Drawing
+namespace DrawMe.NewFolder1
 {
-    public interface IDrawing
+    public interface IMover
     {
-        
         Point startPoint { get; set; }
-        Bitmap DrawFigure(Color color, int width, Point[] points);
+        Bitmap MoveFigure(Color color, int width, Point[] points);
     }
 }

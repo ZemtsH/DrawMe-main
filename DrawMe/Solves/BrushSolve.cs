@@ -9,9 +9,11 @@ namespace DrawMe.Solves
 {
     public class BrushSolve : ISolves
     {
+        List<Point> pointsL = new List<Point>();
         public Point[] DoPoint(Point[] points)
         {
-            return points; // вроде так
+            pointsL.Add(points[points.Length - 1]);
+            return pointsL.ToArray(); // вроде так
         }
     }
 }

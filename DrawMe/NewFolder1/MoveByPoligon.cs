@@ -1,18 +1,18 @@
-﻿using System;
+﻿using DrawMe.Canvases;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DrawMe.Canvases;
 
-namespace DrawMe.Drawing
+namespace DrawMe.NewFolder1
 {
-    public class DrawByPoligon : IDrawing
+    class MoveByPoligon : IMover
     {
-        
         public Point startPoint { get; set; }
-        public Bitmap DrawFigure(Color color, int width, Point[] points)
+
+        public Bitmap MoveFigure(Color color, int width, Point[] points)
         {
             Pen pen = new Pen(color, width);
             Canvas.Instanse.SetTempBitmap();

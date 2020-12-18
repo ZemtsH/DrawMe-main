@@ -36,12 +36,8 @@ namespace DrawMe
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //_mainBM = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             Canvas.Instanse.SetBitmap(new Bitmap(pictureBox1.Width, pictureBox1.Height));
             
-            
-            
-            //_tmpBM = (Bitmap)_mainBM.Clone();
             _crntColor = Color.Black;
             _crntWidth = 1;
             _figures = new List<AbstractFigure>();
@@ -95,16 +91,25 @@ namespace DrawMe
                             _crntFigure = figure;
                             _figures.Remove(_crntFigure);
                             DrawAll();
-                            _crntFigure.DoStart(e.Location);
+                            _crntFigure.DoStartM(e.Location);
                             break;
                         }
                     }
                     break;
                 case "ChangeColor":
-                    _figures.Remove(_crntFigure);
-                    DrawAll();
-                    _crntFigure.ChangeColor(_crntColor, _mainBM);
-                    pictureBox1.Image = _crntFigure.ShowBit();
+                    _crntFigure = null;
+                    foreach (AbstractFigure figure in _figures)
+                    {
+                        if (figure.CheckFigure(e.Location))
+                        {
+                            _crntFigure = figure;
+                            _figures.Remove(_crntFigure);
+                            DrawAll();
+                            _crntFigure.ChangeColor(_crntColor);
+                            pictureBox1.Image = Canvas.Instanse.GetTempBitmap();
+                            break;
+                        }
+                    }
                     break;
             }
             
@@ -117,7 +122,8 @@ namespace DrawMe
 
             foreach (AbstractFigure figure in _figures)
             {
-                Canvas.Instanse.SetBitmap(_crntFigure.drawing.DrawFigure(figure.Color, figure.Width, figure.Points.ToArray()));
+                var bitmap = figure.Mover.MoveFigure(figure.Color, figure.Width, figure.Points.ToArray());
+                Canvas.Instanse.SetBitmap(bitmap);
                 
             }
 
@@ -205,7 +211,8 @@ namespace DrawMe
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            _factory = new BrushFactory();
+            action = "Draw";
         }
         // Color
         private void whiteSmoke_Click(object sender, EventArgs e)
