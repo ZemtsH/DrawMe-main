@@ -14,7 +14,7 @@ namespace DrawMe.Figures
         public RectangleFigure()
         {
             drawing = new DrawByPoligon();
-            solves = new RightTraingleSolve();
+            solves = new RectangleSolve();
         }
     }
 }
