@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DrawMe.Figures;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -14,6 +15,11 @@ namespace DrawMe.Canvases
         private Bitmap _mainBitmap;
         private Bitmap _tmpBitmap;
 
+        public int Width { get; set; }
+        public int Height{ get; set; }
+
+        public List<AbstractFigure> _figures; 
+
         public Bitmap GetBitmap()
         {
             return _mainBitmap;
@@ -21,7 +27,8 @@ namespace DrawMe.Canvases
 
         public void SetBitmap(Bitmap bitmap)
         {
-             _mainBitmap = bitmap; 
+             _mainBitmap = bitmap;
+           // _figures = new List<AbstractFigure>();
         }
 
         public Bitmap GetTempBitmap()
@@ -33,6 +40,13 @@ namespace DrawMe.Canvases
         {
             _tmpBitmap = (Bitmap)_mainBitmap.Clone();
         }
+
+        public void AddFigure(AbstractFigure figure)
+        {
+            _figures.Add(figure);
+        }
+
+        
 
         public static Canvas Instanse
         {

@@ -40,6 +40,20 @@ namespace DrawMe.Figures
             }
             return false;
         }
+
+        public bool CheckFigurePoint(Point point, Point eLoc)
+        {
+            Point prevP = Points[Points.Count - 1];
+            foreach (Point p in Points)
+            {
+                if (Contain(prevP, p, point, Width))
+                {
+                    return true;
+                }
+                prevP = p;
+            }
+            return false;
+        }
         public Bitmap Draw(Point crnt)
         {
             Points = new List<Point>(solves.DoPoint(new Point[] { drawing.startPoint, crnt }));

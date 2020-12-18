@@ -1,0 +1,44 @@
+﻿case "Draaw":
+                    //_crntFigure = _factory.CreateFigure();
+                    //_crntFigure.Color = _crntColor;
+                    //_crntFigure.Width = _crntWidth;
+                    //_crntFigure.DoStart(e.Location);
+
+                    //new DrawAction().OnMouseDown(_crntFigure, new ColorDrawActionParameter() {
+                    //     Point = e.Location,
+                    //     Width = _crntWidth,
+                    //     Color = _crntColor
+                    //});
+
+                    break;
+                case "Mokver":
+                    
+                    _crntFigure = null;
+                    foreach (AbstractFigure figure in Canvas.Instanse._figures)
+                    {
+                        if (figure.CheckFigure(e.Location))
+                        {
+                            _crntFigure = figure;
+                            _figures.Remove(_crntFigure);
+                            DrawAll();
+                            _crntFigure.DoStartM(e.Location);
+                            break;
+                        }
+                    }
+                    break;
+
+                    case "ChangeColora":
+                    _crntFigure = null;
+                    foreach (AbstractFigure figure in _figures)
+                    {
+                        if (figure.CheckFigure(e.Location))
+                        {
+                            _crntFigure = figure;
+                            _figures.Remove(_crntFigure);
+                            DrawAll();
+                            _crntFigure.ChangeColor(_crntColor);
+                            pictureBox1.Image = Canvas.Instanse.GetTempBitmap();
+                            break;
+                        }
+                    }
+                    break;
