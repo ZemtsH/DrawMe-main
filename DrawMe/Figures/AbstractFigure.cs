@@ -38,13 +38,13 @@ namespace DrawMe.Figures
             }
             return false;
         }
-        public void Draw(Point crnt, Bitmap mainBM)
+        public Bitmap Draw(Point crnt)
         {
             Points = new List<Point>(solves.DoPoint(new Point[] { drawing.startPoint, crnt }));
-            drawing.DrawFigure(Color, Width, Points.ToArray(), mainBM);
+            return drawing.DrawFigure(Color, Width, Points.ToArray());
         }
 
-        public void Move(Point crnt, Bitmap mainBM)
+        public Bitmap Move(Point crnt)
         {
             Point delta = new Point(crnt.X - drawing.startPoint.X, crnt.Y - drawing.startPoint.Y);
             drawing.startPoint = crnt;
@@ -53,13 +53,13 @@ namespace DrawMe.Figures
                 Point i = Points[p];
                 Points[p] = new Point(i.X + delta.X, i.Y + delta.Y);
             }
-            drawing.DrawFigure(Color, Width, Points.ToArray(), mainBM);
+            return drawing.DrawFigure(Color, Width, Points.ToArray());
         }
 
         public void ChangeColor(Color color, Bitmap mainBM)
         {
             Color = color;
-            drawing.DrawFigure(Color, Width, Points.ToArray(), mainBM);
+            drawing.DrawFigure(Color, Width, Points.ToArray());
         }
 
         public Bitmap ShowBit()
@@ -72,19 +72,6 @@ namespace DrawMe.Figures
             drawing.startPoint = startPoint;
         }
 
-        public static void MouseMoving(AbstractFigure crntFigure, Point crnt, Bitmap mainBM)
-        {
-            crntFigure.Draw(crnt, mainBM);
-        }
-        public static void MouseDown(AbstractFigure abstractFigure, Point startPoint)
-        {
-            abstractFigure.DoStart(startPoint);
-
-        }
-        public static void MouseUp()
-        {
-
-        }
 
         private bool Contain(Point start, Point end, Point checkPoint, double accuracy)
         {

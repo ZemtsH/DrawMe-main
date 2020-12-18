@@ -56,20 +56,21 @@ namespace DrawMe
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (_MD)
+            if (_MD && _crntFigure != null)
             {
                 switch (action)
                 {
                     case "Draw":
-                _crntFigure.Draw(e.Location, _mainBM);
+                        pictureBox1.Image = Canvas.Instanse.GetBitmap();
+                        pictureBox1.Image = _crntFigure.Draw(e.Location);
                         break;
                     case "Mover":
-
-                        _crntFigure.Move(e.Location, _mainBM);
+                        //pictureBox1.Image = Canvas.Instanse.GetBitmap();
+                        pictureBox1.Image= _crntFigure.Move(e.Location);
                         break;
                 }
-                pictureBox1.Image = Canvas.Instanse.GetBitmap();
-                pictureBox1.Image = Canvas.Instanse.GetTempBitmap();
+                //pictureBox1.Image = Canvas.Instanse.GetBitmap();
+                //pictureBox1.Image = Canvas.Instanse.GetTempBitmap();
             }
         }
 
@@ -86,14 +87,15 @@ namespace DrawMe
                     break;
                 case "Mover":
                     
+                    _crntFigure = null;
                     foreach (AbstractFigure figure in _figures)
                     {
                         if (figure.CheckFigure(e.Location))
                         {
-                            _crntFigure = null;
                             _crntFigure = figure;
                             _figures.Remove(_crntFigure);
                             DrawAll();
+                            //action = "Draw";
                     _crntFigure.DoStart(e.Location);
                             break;
                         }
@@ -107,22 +109,22 @@ namespace DrawMe
                     break;
             }
             
-            
-            //_crntFigure.drawing.crntBit = (Bitmap)_mainBM.Clone();
-            //prev = e.Location;
         }
 
         private void DrawAll()
         {
-            _mainBM = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            graphics = Graphics.FromImage(_mainBM);
+            Canvas.Instanse.SetBitmap(new Bitmap(pictureBox1.Width, pictureBox1.Height));
+
 
             foreach (AbstractFigure figure in _figures)
             {
-                pen.Color = figure.Color;
-                pen.Width = figure.Width;
-                graphics.DrawPolygon(pen, figure.Points.ToArray());
+                
+                //_crntFigure.Color = figure.Color;
+                //_crntFigure.Width = figure.Width;
+                Canvas.Instanse.SetBitmap(_crntFigure.drawing.DrawFigure(figure.Color, figure.Width, figure.Points.ToArray()));
+                
             }
+            //pictureBox1.Image = Canvas.Instanse.GetTempBitmap();
 
         }
 
@@ -132,7 +134,7 @@ namespace DrawMe
             _MD = false;
             
           
-            if (_crntFigure.CheckDraw())
+            if (_crntFigure != null && _crntFigure.CheckDraw())
             {
                 _figures.Add(_crntFigure);
             }
@@ -175,8 +177,8 @@ namespace DrawMe
 
         private void clear_Click(object sender, EventArgs e)
         {
-            _mainBM = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            pictureBox1.Image = _mainBM;
+            Canvas.Instanse.SetBitmap(new Bitmap(pictureBox1.Width, pictureBox1.Height));
+            pictureBox1.Image = Canvas.Instanse.GetBitmap();
             _figures = new List<AbstractFigure>();
         }
 
@@ -199,6 +201,11 @@ namespace DrawMe
         private void changeColor_Click(object sender, EventArgs e)
         {
             action = "ChangeColor";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

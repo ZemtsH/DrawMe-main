@@ -12,14 +12,14 @@ namespace DrawMe.Drawing
     {
         public Bitmap crntBit { get; set; }
         public Point startPoint { get; set; }
-        public void DrawFigure(Color color, int width, Point[] points, Bitmap mainBm)
+        public Bitmap DrawFigure(Color color, int width, Point[] points)
         {
             Pen pen = new Pen(color, width);
-            //Canvas.Instanse.GetBitmap();
+            Canvas.Instanse.SetTempBitmap();
             Graphics graphics = Graphics.FromImage(Canvas.Instanse.GetBitmap());
             graphics.DrawLine(pen, startPoint, points[1]);
             startPoint = points[1];
-            //crntBit = (Bitmap)mainBm.Clone();
+            return Canvas.Instanse.GetBitmap();
         }
     }
 }

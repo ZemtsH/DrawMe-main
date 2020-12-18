@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DrawMe.Drawing
 {
-    public class DrawByEllipse : IDrawing
+    public class DrawByEllipse //: IDrawing
     {
         public Bitmap crntBit { get; set; }
         public Point startPoint { get; set; }

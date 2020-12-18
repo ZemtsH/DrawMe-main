@@ -11,6 +11,6 @@ namespace DrawMe.Drawing
     {
         Bitmap crntBit { get; set; }
         Point startPoint { get; set; }
-        void DrawFigure(Color color, int width, Point[] points, Bitmap mainBm);
+        Bitmap DrawFigure(Color color, int width, Point[] points);
     }
 }
