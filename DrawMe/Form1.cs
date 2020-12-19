@@ -226,5 +226,31 @@ namespace DrawMe
         {
             _action = new MovePointAction();
         }
+
+        private void save_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                SaveFileDialog savedialog = new SaveFileDialog();
+                savedialog.Title = "Сохранить картинку как...";
+                savedialog.OverwritePrompt = true;
+                savedialog.CheckPathExists = true;
+                savedialog.ShowHelp = true;
+                savedialog.Filter = "Image Files(*.BMP)|*.BMP|Image Files(*.JPG)|*.JPG|Image Files(*.GIF)|*.GIF|Image Files(*.PNG)|*.PNG|All files (*.*)|*.*";
+                if (savedialog.ShowDialog() == DialogResult.OK) 
+                {
+                    try
+                    {
+                        pictureBox1.Image.Save(savedialog.FileName);
+                       
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Невозможно сохранить изображение", "Ошибка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }

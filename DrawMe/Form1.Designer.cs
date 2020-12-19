@@ -58,6 +58,7 @@
             this.rotate = new System.Windows.Forms.Button();
             this.changeColor = new System.Windows.Forms.Button();
             this.movePoint = new System.Windows.Forms.Button();
+            this.save = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.widthBox)).BeginInit();
             this.SuspendLayout();
@@ -399,12 +400,24 @@
             this.movePoint.UseVisualStyleBackColor = true;
             this.movePoint.Click += new System.EventHandler(this.movePoint_Click);
             // 
+            // save
+            // 
+            this.save.Location = new System.Drawing.Point(572, 70);
+            this.save.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.save.Name = "save";
+            this.save.Size = new System.Drawing.Size(192, 49);
+            this.save.TabIndex = 30;
+            this.save.Text = "Сохрани";
+            this.save.UseVisualStyleBackColor = true;
+            this.save.Click += new System.EventHandler(this.save_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1237, 638);
+            this.Controls.Add(this.save);
             this.Controls.Add(this.movePoint);
             this.Controls.Add(this.changeColor);
             this.Controls.Add(this.rotate);
@@ -478,6 +491,7 @@
         private System.Windows.Forms.Button rotate;
         private System.Windows.Forms.Button changeColor;
         private System.Windows.Forms.Button movePoint;
+        private System.Windows.Forms.Button save;
     }
 }
 
