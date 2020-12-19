@@ -1,4 +1,5 @@
 ﻿using DrawMe.Drawing;
+using DrawMe.NewFolder1;
 using DrawMe.Solves;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,8 @@ namespace DrawMe.Figures
         public RectangleFigure()
         {
             drawing = new DrawByPoligon();
-            solves = new RightTraingleSolve();
+            solves = new RectangleSolve();
+            Mover = new MoveByPoligon();
         }
     }
 }

@@ -16,19 +16,16 @@ namespace DrawMe
 {
     public partial class Form1 : Form
     {
-        Bitmap _mainBM;
-        Bitmap _tmpBM;
-
         AbstractFigure _crntFigure;
         Color _crntColor;
         int _crntWidth;
         List<AbstractFigure> _figures;
         IFactory _factory;
-        Graphics graphics;
+
 
         string action;
         Pen pen;
-        Point prev;
+
         bool _MD;
 
         IAction _action;
@@ -54,9 +51,7 @@ namespace DrawMe
             _action = new DrawAction();
 
             pen = new Pen(_crntColor, _crntWidth); // хз это наверно вообще не нужно
-            prev = new Point(0, 0);
             _MD = false;
-            action = "Draw";
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
@@ -126,8 +121,7 @@ namespace DrawMe
             foreach (AbstractFigure figure in Canvas.Instanse._figures)
             {
                 var bitmap = figure.Mover.MoveFigure(figure.Color, figure.Width, figure.Points.ToArray());
-                Canvas.Instanse.SetBitmap(bitmap);
-                
+                Canvas.Instanse.SetBitmap(bitmap);  
             }
 
         }
@@ -150,7 +144,6 @@ namespace DrawMe
         private void rightTraingle_Click(object sender, EventArgs e)
         {
             _factory = new RightTraingleFactory();
-            action = "Draw";
             _action = new DrawAction();
         }
 
@@ -168,16 +161,12 @@ namespace DrawMe
         private void button4_Click(object sender, EventArgs e)
         {
             _factory = new RectangleFactory();
-            action = "Draw";
-            //_crntFigure = new RectangleFigure();
-            //_crntFigure.Color = _crntColor;
-            //_crntFigure.Width = _crntWidth;
+            _action = new DrawAction();
         }
 
         private void isoscelesTraingle_Click(object sender, EventArgs e)
         {
             _factory = new IsoscelesTraingleFactory();
-            action = "Draw";
             _action = new DrawAction();
 
         }
@@ -185,8 +174,9 @@ namespace DrawMe
         private void clear_Click(object sender, EventArgs e)
         {
             Canvas.Instanse.SetBitmap(new Bitmap(pictureBox1.Width, pictureBox1.Height));
+            Canvas.Instanse._figures = new List<AbstractFigure>();
             pictureBox1.Image = Canvas.Instanse.GetBitmap();
-            _figures = new List<AbstractFigure>();
+            _action = new DrawAction();
         }
 
         private void widthBox_ValueChanged(object sender, EventArgs e)
@@ -196,7 +186,6 @@ namespace DrawMe
 
         private void mover_Click(object sender, EventArgs e)
         {
-            action = "Mover";
             _action = new MoveAction();
         }
 
@@ -208,86 +197,34 @@ namespace DrawMe
 
         private void changeColor_Click(object sender, EventArgs e)
         {
-            action = "ChangeColor";
             _action = new ChangeColorAction();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             _factory = new SquareFactory();
-            _action = new MoveAction();
-            action = "Draw";
+            _action = new DrawAction();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             _factory = new BrushFactory();
-            action = "Draw";
             _action = new DrawAction();
         }
         // Color
         private void whiteSmoke_Click(object sender, EventArgs e)
         {
-            _crntColor = Color.WhiteSmoke;
-        }
-
-        private void gainsboro_Click(object sender, EventArgs e)
-        {
-            _crntColor = Color.Gainsboro;
-        }
-
-        private void lightGray_Click(object sender, EventArgs e)
-        {
-            _crntColor = Color.LightGray;
-        }
-
-        private void silver_Click(object sender, EventArgs e)
-        {
-            _crntColor = Color.Silver;
-        }
-
-        private void darkGray_Click(object sender, EventArgs e)
-        {
-            _crntColor = Color.DarkGray;
-        }
-
-        private void gray_Click(object sender, EventArgs e)
-        {
-            _crntColor = Color.Gray;
-        }
-
-        private void dimGray_Click(object sender, EventArgs e)
-        {
-            _crntColor = Color.DimGray;
-        }
-
-        private void black_Click(object sender, EventArgs e)
-        {
-            _crntColor = Color.Black;
-        }
-
-        private void white_Click(object sender, EventArgs e)
-        {
-            _crntColor = Color.White;
+            _crntColor = ((Button)sender).BackColor;
         }
 
         private void rotate_Click(object sender, EventArgs e)
         {
-            action = "ChangeP";
-            Canvas.Instanse.SetTempBitmap();
-            Graphics graphics = Graphics.FromImage(Canvas.Instanse.GetTempBitmap());
-            Pen pen = new Pen(Color.Red, 3);
-            foreach (AbstractFigure abs in _figures)
-            {
-                if (!(abs is BrushFigure)) 
-                {
-                    for (int p = 0; p < abs.Points.Count(); p++)
-                    {
-                        graphics.DrawEllipse(pen, abs.Points[p].X, abs.Points[p].Y, 2, 2);
-                    }
-                }
-            }
-            pictureBox1.Image = Canvas.Instanse.GetTempBitmap();
+            
+        }
+
+        private void movePoint_Click(object sender, EventArgs e)
+        {
+            _action = new MovePointAction();
         }
     }
 }

@@ -87,7 +87,7 @@ namespace DrawMe.Actions
                     figure = crntFigure;
                     Canvas.Instanse._figures.Remove(figure);
                     DrawAll();
-                    figure.DoStartM(paramter.Point);
+                    //figure.DoStartM(paramter.Point);
                     break;
                 }
             }
@@ -142,6 +142,65 @@ namespace DrawMe.Actions
 
         public Bitmap OnMouseMove(AbstractFigure figure, ActionParamter paramter)
         {
+            return Canvas.Instanse.GetBitmap();
+        }
+
+        public void OnMouseUp(AbstractFigure figure, ActionParamter paramter)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DrawAll()
+        {
+            int width = Canvas.Instanse.Width;
+            int height = Canvas.Instanse.Height;
+            Canvas.Instanse.SetBitmap(new Bitmap(width, height));
+
+
+            foreach (AbstractFigure fig in Canvas.Instanse._figures)
+            {
+                var bitmap = fig.Mover.MoveFigure(fig.Color, fig.Width, fig.Points.ToArray());
+                Canvas.Instanse.SetBitmap(bitmap);
+
+            }
+
+        }
+    }
+    public class MovePointAction : IAction
+    {
+        int indPoint;
+        public void OnMouseDown(out AbstractFigure figure, ActionParamter paramter)
+        {
+            figure = null;
+            foreach (AbstractFigure crntFigure in Canvas.Instanse._figures)
+            {
+                if (crntFigure.CheckFigure(paramter.Point))
+                {
+                    for (int i = 0; i < crntFigure.Points.Count(); i++)
+                    {
+                        if (crntFigure.CheckInsidePoint(crntFigure.Points[i], paramter.Point))
+                        {
+                            indPoint = i;
+                            figure = crntFigure;
+                            Canvas.Instanse._figures.Remove(figure);
+                            DrawAll();
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+
+        public Bitmap OnMouseMove(AbstractFigure figure, ActionParamter paramter)
+        {
+            if (figure != null)
+            {
+                Color color = figure.Color;
+                int width = figure.Width;
+                figure.Points[indPoint] = paramter.Point;
+                return figure.Mover.MoveFigure(color, width, figure.Points.ToArray());
+            }
             return Canvas.Instanse.GetBitmap();
         }
 

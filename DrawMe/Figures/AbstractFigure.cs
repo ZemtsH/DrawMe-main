@@ -109,5 +109,14 @@ namespace DrawMe.Figures
                 return true;
             else return false;
         }
+
+        public bool CheckInsidePoint(Point point, Point eLoc)
+        {
+            if ( (eLoc.X >= (point.X-Width*2)) && (eLoc.X <= (point.X + Width*2)) && (eLoc.Y >= (point.Y-Width*2)) && (eLoc.Y <= (point.Y + Width*2)) )
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
