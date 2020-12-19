@@ -41,7 +41,6 @@
             this.isoscelesTraingle = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.clear = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.whiteSmoke = new System.Windows.Forms.Button();
@@ -59,6 +58,7 @@
             this.changeColor = new System.Windows.Forms.Button();
             this.movePoint = new System.Windows.Forms.Button();
             this.save = new System.Windows.Forms.Button();
+            this.load = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.widthBox)).BeginInit();
             this.SuspendLayout();
@@ -203,23 +203,11 @@
             this.button12.Text = "Правильный N-угольник";
             this.button12.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(225, 633);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(98, 21);
-            this.checkBox1.TabIndex = 13;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
             // clear
             // 
             this.clear.BackColor = System.Drawing.Color.HotPink;
             this.clear.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.clear.Location = new System.Drawing.Point(1069, 33);
+            this.clear.Location = new System.Drawing.Point(1221, 28);
             this.clear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.clear.Name = "clear";
             this.clear.Size = new System.Drawing.Size(147, 64);
@@ -411,12 +399,24 @@
             this.save.UseVisualStyleBackColor = true;
             this.save.Click += new System.EventHandler(this.save_Click);
             // 
+            // load
+            // 
+            this.load.Location = new System.Drawing.Point(793, 70);
+            this.load.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.load.Name = "load";
+            this.load.Size = new System.Drawing.Size(192, 49);
+            this.load.TabIndex = 31;
+            this.load.Text = "Загрузи";
+            this.load.UseVisualStyleBackColor = true;
+            this.load.Click += new System.EventHandler(this.load_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(1237, 638);
+            this.ClientSize = new System.Drawing.Size(1387, 801);
+            this.Controls.Add(this.load);
             this.Controls.Add(this.save);
             this.Controls.Add(this.movePoint);
             this.Controls.Add(this.changeColor);
@@ -434,7 +434,6 @@
             this.Controls.Add(this.whiteSmoke);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.clear);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.isoscelesTraingle);
@@ -474,7 +473,6 @@
         private System.Windows.Forms.Button isoscelesTraingle;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button clear;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button whiteSmoke;
@@ -492,6 +490,7 @@
         private System.Windows.Forms.Button changeColor;
         private System.Windows.Forms.Button movePoint;
         private System.Windows.Forms.Button save;
+        private System.Windows.Forms.Button load;
     }
 }
 

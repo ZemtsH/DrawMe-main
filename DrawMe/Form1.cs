@@ -80,50 +80,12 @@ namespace DrawMe
                 Factory = _factory
             };
 
-            _action.OnMouseDown(out _crntFigure, actionParameter);
+             _action.OnMouseDown(out _crntFigure, actionParameter);
             pictureBox1.Image = Canvas.Instanse.GetTempBitmap();
 
             _MD = true;
-            switch (action)
-            {
-                case "ChangeP":
-                    _crntFigure = null;
-                    foreach (AbstractFigure figure in _figures)
-                    {
-                       if (figure.CheckFigure(e.Location))
-                            {
-                                _crntFigure = figure;
-                                _figures.Remove(_crntFigure);
-                                DrawAll();
-                            for (int p = 0; p < _crntFigure.Points.Count(); p++)
-                            {
-                                if (_crntFigure.CheckFigurePoint(_crntFigure.Points[p], e.Location))
-                                {
-
-                                    break;
-                                }
-                            }   
-                                pictureBox1.Image = Canvas.Instanse.GetTempBitmap();
-                                break;
-                            }
-                        
-                    }
-                        break;
-            }
             
-        }
-
-        private void DrawAll()
-        {
-            Canvas.Instanse.SetBitmap(new Bitmap(pictureBox1.Width, pictureBox1.Height));
-
-
-            foreach (AbstractFigure figure in Canvas.Instanse._figures)
-            {
-                var bitmap = figure.Mover.MoveFigure(figure.Color, figure.Width, figure.Points.ToArray());
-                Canvas.Instanse.SetBitmap(bitmap);  
-            }
-
+            
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
@@ -174,6 +136,7 @@ namespace DrawMe
         private void clear_Click(object sender, EventArgs e)
         {
             Canvas.Instanse.SetBitmap(new Bitmap(pictureBox1.Width, pictureBox1.Height));
+            Canvas.Instanse.SetTempBitmap();
             Canvas.Instanse._figures = new List<AbstractFigure>();
             pictureBox1.Image = Canvas.Instanse.GetBitmap();
             _action = new DrawAction();
@@ -249,6 +212,25 @@ namespace DrawMe
                         MessageBox.Show("Невозможно сохранить изображение", "Ошибка",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                }
+            }
+        }
+
+        private void load_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openDialog = new OpenFileDialog();
+            openDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
+            if (openDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                        Canvas.Instanse.SetBitmap(new Bitmap(openDialog.FileName));
+                    Canvas.Instanse.SetTempBitmap();
+                    pictureBox1.Image = Canvas.Instanse.GetBitmap();
+                }
+                catch
+                {
+                    MessageBox.Show("Не удалось", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
