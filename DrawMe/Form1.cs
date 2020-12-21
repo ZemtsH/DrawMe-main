@@ -66,7 +66,8 @@ namespace DrawMe
                     Factory = _factory
                 };
 
-                pictureBox1.Image = _action.OnMouseMove(_crntFigure, actionParameter);
+                    _action.OnMouseMove(_crntFigure, actionParameter);
+                pictureBox1.Image = Canvas.Instanse.GetTempBitmap();
             }
         }
 
@@ -92,15 +93,18 @@ namespace DrawMe
         {
 
             _MD = false;
-            
-          
-            if (_crntFigure != null && _crntFigure.CheckDraw())
+
+            var actionParameter = new ActionParamter()
             {
-                //_figures.Add(_crntFigure);
-                Canvas.Instanse.AddFigure(_crntFigure);
-                //_figures = Canvas.Instanse._figures;
-            }
-            Canvas.Instanse.SetBitmap(Canvas.Instanse.GetTempBitmap());
+                Color = _crntColor,
+                Point = e.Location,
+                Width = _crntWidth,
+                Factory = _factory
+            };
+
+            _action.OnMouseUp(_crntFigure, actionParameter);
+
+            
         }
 
         private void rightTraingle_Click(object sender, EventArgs e)
@@ -243,7 +247,12 @@ namespace DrawMe
         private void button6_Click(object sender, EventArgs e)
         {
             _factory = new CircleFactory();
-            action = "Draw";
+            _action = new DrawAction();
+        }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+            _action = new DeleteAction();
         }
     }
 }

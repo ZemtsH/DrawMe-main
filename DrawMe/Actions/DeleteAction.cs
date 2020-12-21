@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DrawMe.Actions
 {
-    class ChangeWidthAction : IAction
+    class DeleteAction : IAction
     {
         public void OnMouseDown(out AbstractFigure figure, ActionParamter paramter)
         {
@@ -21,8 +21,7 @@ namespace DrawMe.Actions
                     figure = crntFigure;
                     Canvas.Instanse._figures.Remove(figure);
                     Canvas.Instanse.DrawAll();
-                    figure.ChangeWidth(paramter.Width);
-                    Canvas.Instanse.GetTempBitmap();
+                    Canvas.Instanse.SetTempBitmap();
                     break;
                 }
             }
@@ -30,16 +29,12 @@ namespace DrawMe.Actions
 
         public void OnMouseMove(AbstractFigure figure, ActionParamter paramter)
         {
-            Canvas.Instanse.GetTempBitmap();
+            Canvas.Instanse.GetBitmap();
         }
 
         public void OnMouseUp(AbstractFigure figure, ActionParamter paramter)
         {
-            if (figure != null && figure.CheckDraw())
-            {
-                Canvas.Instanse.AddFigure(figure);
-            }
-            Canvas.Instanse.SetBitmap(Canvas.Instanse.GetTempBitmap());
+            
         }
     }
 }

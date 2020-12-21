@@ -1,4 +1,5 @@
-﻿using DrawMe.Figures;
+﻿using DrawMe.Canvases;
+using DrawMe.Figures;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -20,15 +21,20 @@ namespace DrawMe.Actions
             //return new EmptyActionResult();
         }
 
-        public Bitmap OnMouseMove(AbstractFigure figure, ActionParamter paramter)
+        public void OnMouseMove(AbstractFigure figure, ActionParamter paramter)
         {
-            var p = (ActionParamter)paramter;
-            return figure.Draw(p.Point);
+            figure.Draw(paramter.Point);
         }
 
         public void OnMouseUp(AbstractFigure figure, ActionParamter paramter)
         {
-            throw new NotImplementedException();
+            if (figure != null && figure.CheckDraw())
+            {
+                //_figures.Add(_crntFigure);
+                Canvas.Instanse.AddFigure(figure);
+                //_figures = Canvas.Instanse._figures;
+            }
+            Canvas.Instanse.SetBitmap(Canvas.Instanse.GetTempBitmap());
         }
     }
 }

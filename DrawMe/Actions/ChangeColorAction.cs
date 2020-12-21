@@ -28,14 +28,18 @@ namespace DrawMe.Actions
             }
         }
 
-        public Bitmap OnMouseMove(AbstractFigure figure, ActionParamter paramter)
+        public void OnMouseMove(AbstractFigure figure, ActionParamter paramter)
         {
-            return Canvas.Instanse.GetTempBitmap();
+            Canvas.Instanse.GetTempBitmap();
         }
 
         public void OnMouseUp(AbstractFigure figure, ActionParamter paramter)
         {
-            throw new NotImplementedException();
+            if (figure != null && figure.CheckDraw())
+            {
+                Canvas.Instanse.AddFigure(figure);
+            }
+            Canvas.Instanse.SetBitmap(Canvas.Instanse.GetTempBitmap());
         }
 
        

@@ -60,6 +60,7 @@
             this.save = new System.Windows.Forms.Button();
             this.load = new System.Windows.Forms.Button();
             this.width = new System.Windows.Forms.Button();
+            this.delete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.widthBox)).BeginInit();
             this.SuspendLayout();
@@ -364,7 +365,7 @@
             this.rotate.Name = "rotate";
             this.rotate.Size = new System.Drawing.Size(192, 49);
             this.rotate.TabIndex = 27;
-            this.rotate.Text = "Вращай";
+            this.rotate.Text = "Залей";
             this.rotate.UseVisualStyleBackColor = true;
             this.rotate.Click += new System.EventHandler(this.rotate_Click);
             // 
@@ -423,12 +424,24 @@
             this.width.UseVisualStyleBackColor = true;
             this.width.Click += new System.EventHandler(this.width_Click);
             // 
+            // delete
+            // 
+            this.delete.Location = new System.Drawing.Point(572, 70);
+            this.delete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(192, 49);
+            this.delete.TabIndex = 33;
+            this.delete.Text = "Удали";
+            this.delete.UseVisualStyleBackColor = true;
+            this.delete.Click += new System.EventHandler(this.delete_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1387, 801);
+            this.Controls.Add(this.delete);
             this.Controls.Add(this.width);
             this.Controls.Add(this.load);
             this.Controls.Add(this.save);
@@ -506,6 +519,7 @@
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.Button load;
         private System.Windows.Forms.Button width;
+        private System.Windows.Forms.Button delete;
     }
 }
 

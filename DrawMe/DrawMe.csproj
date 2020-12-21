@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Actions\ChangeColorAction.cs" />
     <Compile Include="Actions\ChangeWidthAction.cs" />
+    <Compile Include="Actions\DeleteAction.cs" />
     <Compile Include="Actions\DrawAction.cs" />
     <Compile Include="Actions\IAction.cs" />
     <Compile Include="Actions\MoveAction.cs" />

@@ -18,7 +18,7 @@ namespace DrawMe.Canvases
         public int Width { get; set; }
         public int Height{ get; set; }
 
-        public List<AbstractFigure> _figures; 
+        public List<AbstractFigure> _figures;
 
         public static Canvas Instanse
         {
@@ -64,6 +64,7 @@ namespace DrawMe.Canvases
             int width = Instanse.Width;
             int height = Instanse.Height;
             Instanse.SetBitmap(new Bitmap(width, height));
+            Instanse.SetTempBitmap();
 
 
             foreach (AbstractFigure fig in Instanse._figures)
