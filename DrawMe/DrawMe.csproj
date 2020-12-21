@@ -52,6 +52,7 @@
     <Compile Include="Drawing\DrawByPoligon.cs" />
     <Compile Include="Drawing\IDrawing.cs" />
     <Compile Include="Factory\BrushFactory.cs" />
+    <Compile Include="Factory\CircleFactory.cs" />
     <Compile Include="Factory\IFactory.cs" />
     <Compile Include="Factory\IsoscelesTraingleFactory.cs" />
     <Compile Include="Factory\LineFactory.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Factory\SquareFactory.cs" />
     <Compile Include="Figures\AbstractFigure.cs" />
     <Compile Include="Figures\BrushFigure.cs" />
+    <Compile Include="Figures\CircleFigure.cs" />
     <Compile Include="Figures\LineFigure.cs" />
     <Compile Include="Figures\RectangleFigure.cs" />
     <Compile Include="Figures\IsoscelesTraingleFigure.cs" />
@@ -72,6 +74,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Solves\BrushSolve.cs" />
+    <Compile Include="Solves\CircleSolve.cs" />
     <Compile Include="Solves\ISolves.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

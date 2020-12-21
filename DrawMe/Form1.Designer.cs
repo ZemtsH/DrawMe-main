@@ -137,6 +137,7 @@
             this.button6.TabIndex = 6;
             this.button6.Text = "Окружность";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -217,10 +218,10 @@
             // 
             this.clear.BackColor = System.Drawing.Color.HotPink;
             this.clear.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.clear.Location = new System.Drawing.Point(1081, 31);
+            this.clear.Location = new System.Drawing.Point(1174, 30);
             this.clear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.clear.Name = "clear";
-            this.clear.Size = new System.Drawing.Size(145, 59);
+            this.clear.Size = new System.Drawing.Size(178, 91);
             this.clear.TabIndex = 14;
             this.clear.Text = "Начини всё с чистого листа";
             this.clear.UseVisualStyleBackColor = false;

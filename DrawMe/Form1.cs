@@ -252,5 +252,11 @@ namespace DrawMe
         {
             _crntColor = Color.White;
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            _factory = new CircleFactory();
+            action = "Draw";
+        }
     }
 }
