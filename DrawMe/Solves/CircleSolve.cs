@@ -23,8 +23,9 @@ namespace DrawMe.Solves
             int rx = points[1].X;
             int ry = points[1].Y;
             List<Point> finalPoints = new List<Point>();
-            int dtheta = (int)(2 * Math.PI / num_theta);
-            int theta = 0;
+            float dtheta = (float)(2 * Math.PI / num_theta);
+            float theta = 0;
+            double r = Math.Sqrt((cx - rx) ^ 2 + (cy - ry) ^ 2);
             for (int i = 0; i < num_theta; i++)
             {
                 int x = (int)(cx + rx * Math.Cos(theta));
