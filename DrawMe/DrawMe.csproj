@@ -46,7 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\ChangeColorAction.cs" />
+    <Compile Include="Actions\ChangeWidthAction.cs" />
+    <Compile Include="Actions\DrawAction.cs" />
     <Compile Include="Actions\IAction.cs" />
+    <Compile Include="Actions\MoveAction.cs" />
+    <Compile Include="Actions\MovePointAction.cs" />
     <Compile Include="Canvas\Canvas.cs" />
     <Compile Include="Drawing\DrawByEllipse.cs" />
     <Compile Include="Drawing\DrawByLine.cs" />

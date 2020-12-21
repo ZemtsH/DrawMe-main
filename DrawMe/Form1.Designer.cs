@@ -59,6 +59,7 @@
             this.movePoint = new System.Windows.Forms.Button();
             this.save = new System.Windows.Forms.Button();
             this.load = new System.Windows.Forms.Button();
+            this.width = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.widthBox)).BeginInit();
             this.SuspendLayout();
@@ -368,7 +369,7 @@
             // 
             // changeColor
             // 
-            this.changeColor.Location = new System.Drawing.Point(793, 11);
+            this.changeColor.Location = new System.Drawing.Point(791, 11);
             this.changeColor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.changeColor.Name = "changeColor";
             this.changeColor.Size = new System.Drawing.Size(192, 49);
@@ -390,7 +391,7 @@
             // 
             // save
             // 
-            this.save.Location = new System.Drawing.Point(572, 70);
+            this.save.Location = new System.Drawing.Point(1000, 68);
             this.save.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.save.Name = "save";
             this.save.Size = new System.Drawing.Size(192, 49);
@@ -401,7 +402,7 @@
             // 
             // load
             // 
-            this.load.Location = new System.Drawing.Point(793, 70);
+            this.load.Location = new System.Drawing.Point(1000, 11);
             this.load.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.load.Name = "load";
             this.load.Size = new System.Drawing.Size(192, 49);
@@ -410,12 +411,24 @@
             this.load.UseVisualStyleBackColor = true;
             this.load.Click += new System.EventHandler(this.load_Click);
             // 
+            // width
+            // 
+            this.width.Location = new System.Drawing.Point(791, 70);
+            this.width.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.width.Name = "width";
+            this.width.Size = new System.Drawing.Size(192, 49);
+            this.width.TabIndex = 32;
+            this.width.Text = "Меняй толщину";
+            this.width.UseVisualStyleBackColor = true;
+            this.width.Click += new System.EventHandler(this.width_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1387, 801);
+            this.Controls.Add(this.width);
             this.Controls.Add(this.load);
             this.Controls.Add(this.save);
             this.Controls.Add(this.movePoint);
@@ -491,6 +504,7 @@
         private System.Windows.Forms.Button movePoint;
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.Button load;
+        private System.Windows.Forms.Button width;
     }
 }
 

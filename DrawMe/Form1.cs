@@ -234,5 +234,10 @@ namespace DrawMe
                 }
             }
         }
+
+        private void width_Click(object sender, EventArgs e)
+        {
+            _action = new ChangeWidthAction();
+        }
     }
 }

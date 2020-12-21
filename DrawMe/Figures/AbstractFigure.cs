@@ -78,6 +78,12 @@ namespace DrawMe.Figures
             Mover.MoveFigure(Color, Width, Points.ToArray());
         }
 
+        public void ChangeWidth(int width)
+        {
+            Width = width;
+            Mover.MoveFigure(Color, Width, Points.ToArray());
+        }
+
         public void DoStart(Point startPoint)
         {
             drawing.startPoint = startPoint;

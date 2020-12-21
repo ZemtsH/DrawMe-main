@@ -20,6 +20,19 @@ namespace DrawMe.Canvases
 
         public List<AbstractFigure> _figures; 
 
+        public static Canvas Instanse
+        {
+            get
+            {
+                {
+                    if (_main == null)
+                    {
+                        _main = new Canvas();
+                    }
+                    return _main;
+                }
+            }
+        }
         public Bitmap GetBitmap()
         {
             return _mainBitmap;
@@ -46,21 +59,23 @@ namespace DrawMe.Canvases
             _figures.Add(figure);
         }
 
-        
-
-        public static Canvas Instanse
+        public void DrawAll()
         {
-            get
+            int width = Instanse.Width;
+            int height = Instanse.Height;
+            Instanse.SetBitmap(new Bitmap(width, height));
+
+
+            foreach (AbstractFigure fig in Instanse._figures)
             {
-                {
-                    if (_main == null)
-                    {
-                        _main = new Canvas();
-                    }
-                    return _main;
-                }
+                var bitmap = fig.Mover.MoveFigure(fig.Color, fig.Width, fig.Points.ToArray());
+                Instanse.SetBitmap(bitmap);
             }
+
         }
+
+
+
 
     }
 }
