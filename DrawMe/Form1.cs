@@ -19,12 +19,8 @@ namespace DrawMe
         AbstractFigure _crntFigure;
         Color _crntColor;
         int _crntWidth;
-        List<AbstractFigure> _figures;
         IFactory _factory;
 
-
-        string action;
-        Pen pen;
 
         bool _MD;
 
@@ -45,12 +41,11 @@ namespace DrawMe
             
             _crntColor = Color.Black;
             _crntWidth = 5;
-            _figures = new List<AbstractFigure>();
 
             _factory = new BrushFactory(); // на старте задаем кисть 
             _action = new DrawAction();
 
-            pen = new Pen(_crntColor, _crntWidth); // хз это наверно вообще не нужно
+// хз это наверно вообще не нужно
             _MD = false;
         }
 
@@ -60,17 +55,15 @@ namespace DrawMe
             {
                 var actionParameter = new ActionParamter()
                 {
-                    Color = _crntColor,
                     Point = e.Location,
-                    Width = _crntWidth,
-                    Factory = _factory
                 };
 
-                    _action.OnMouseMove(_crntFigure, actionParameter);
+                _action.OnMouseMove(_crntFigure, actionParameter);
                 pictureBox1.Image = Canvas.Instanse.GetTempBitmap();
             }
         }
 
+        //Actions
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             var actionParameter = new ActionParamter()
@@ -85,28 +78,26 @@ namespace DrawMe
             pictureBox1.Image = Canvas.Instanse.GetTempBitmap();
 
             _MD = true;
-            
-            
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-
             _MD = false;
-
-            var actionParameter = new ActionParamter()
-            {
-                Color = _crntColor,
-                Point = e.Location,
-                Width = _crntWidth,
-                Factory = _factory
-            };
-
-            _action.OnMouseUp(_crntFigure, actionParameter);
-
-            
+            _action.OnMouseUp(_crntFigure, new ActionParamter());
         }
 
+        // parameter
+        private void widthBox_ValueChanged(object sender, EventArgs e)
+        {
+            _crntWidth = (int)widthBox.Value;
+        }
+
+        private void whiteSmoke_Click(object sender, EventArgs e)
+        {
+            _crntColor = ((Button)sender).BackColor;
+        }
+
+        //figures
         private void rightTraingle_Click(object sender, EventArgs e)
         {
             _factory = new RightTraingleFactory();
@@ -114,12 +105,6 @@ namespace DrawMe
         }
 
         private void button11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
         }
@@ -137,6 +122,31 @@ namespace DrawMe
 
         }
 
+        private void line_Click(object sender, EventArgs e)
+        {
+            _factory = new LineFactory();
+            _action = new DrawAction();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            _factory = new SquareFactory();
+            _action = new DrawAction();
+        }
+
+        private void brush_Click(object sender, EventArgs e)
+        {
+            _factory = new BrushFactory();
+            _action = new DrawAction();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            _factory = new CircleFactory();
+            _action = new DrawAction();
+        }
+
+        //clear
         private void clear_Click(object sender, EventArgs e)
         {
             Canvas.Instanse.SetBitmap(new Bitmap(pictureBox1.Width, pictureBox1.Height));
@@ -146,20 +156,10 @@ namespace DrawMe
             _action = new DrawAction();
         }
 
-        private void widthBox_ValueChanged(object sender, EventArgs e)
-        {
-            _crntWidth = (int)widthBox.Value;
-        }
-
+        //actions
         private void mover_Click(object sender, EventArgs e)
         {
             _action = new MoveAction();
-        }
-
-        private void line_Click(object sender, EventArgs e)
-        {
-            _factory = new LineFactory();
-            _action = new DrawAction();
         }
 
         private void changeColor_Click(object sender, EventArgs e)
@@ -167,22 +167,6 @@ namespace DrawMe
             _action = new ChangeColorAction();
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            _factory = new SquareFactory();
-            _action = new DrawAction();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            _factory = new BrushFactory();
-            _action = new DrawAction();
-        }
-        // Color
-        private void whiteSmoke_Click(object sender, EventArgs e)
-        {
-            _crntColor = ((Button)sender).BackColor;
-        }
 
         private void rotate_Click(object sender, EventArgs e)
         {
@@ -192,6 +176,16 @@ namespace DrawMe
         private void movePoint_Click(object sender, EventArgs e)
         {
             _action = new MovePointAction();
+        }
+
+        private void width_Click(object sender, EventArgs e)
+        {
+            _action = new ChangeWidthAction();
+        }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+            _action = new DeleteAction();
         }
 
         private void save_Click(object sender, EventArgs e)
@@ -239,20 +233,5 @@ namespace DrawMe
             }
         }
 
-        private void width_Click(object sender, EventArgs e)
-        {
-            _action = new ChangeWidthAction();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            _factory = new CircleFactory();
-            _action = new DrawAction();
-        }
-
-        private void delete_Click(object sender, EventArgs e)
-        {
-            _action = new DeleteAction();
-        }
     }
 }
