@@ -10,16 +10,23 @@ namespace DrawMe.Drawing
 {
     class DrawByLine : IDrawing
     {
-        public Bitmap crntBit { get; set; }
+        
         public Point startPoint { get; set; }
         public Bitmap DrawFigure(Color color, int width, Point[] points)
         {
             Pen pen = new Pen(color, width);
             Canvas.Instanse.SetTempBitmap();
             Graphics graphics = Graphics.FromImage(Canvas.Instanse.GetBitmap());
-            graphics.DrawLine(pen, startPoint, points[1]);
-            startPoint = points[1];
+            graphics.DrawLine(pen,startPoint ,points[points.Length-1]);
+            startPoint = points[points.Length - 1];
             return Canvas.Instanse.GetBitmap();
+            //Pen pen = new Pen(color, width);
+            //Canvas.Instanse.SetTempBitmap();
+            //Graphics graphics = Graphics.FromImage(Canvas.Instanse.GetBitmap());
+            //graphics.DrawLine(pen, startPoint, points[1]);
+            //startPoint = points[1];
+            //return Canvas.Instanse.GetBitmap();
         }
     }
-}
+    }
+

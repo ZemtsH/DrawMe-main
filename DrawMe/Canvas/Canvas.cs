@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DrawMe.Figures;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -14,25 +15,10 @@ namespace DrawMe.Canvases
         private Bitmap _mainBitmap;
         private Bitmap _tmpBitmap;
 
-        public Bitmap GetBitmap()
-        {
-            return _mainBitmap;
-        }
+        public int Width { get; set; }
+        public int Height{ get; set; }
 
-        public void SetBitmap(Bitmap bitmap)
-        {
-             _mainBitmap = bitmap; 
-        }
-
-        public Bitmap GetTempBitmap()
-        {
-            return _tmpBitmap;
-        }
-
-        public void SetTempBitmap()
-        {
-            _tmpBitmap = (Bitmap)_mainBitmap.Clone();
-        }
+        public List<AbstractFigure> _figures; 
 
         public static Canvas Instanse
         {
@@ -47,6 +33,49 @@ namespace DrawMe.Canvases
                 }
             }
         }
+        public Bitmap GetBitmap()
+        {
+            return _mainBitmap;
+        }
+
+        public void SetBitmap(Bitmap bitmap)
+        {
+             _mainBitmap = bitmap;
+           // _figures = new List<AbstractFigure>();
+        }
+
+        public Bitmap GetTempBitmap()
+        {
+            return _tmpBitmap;
+        }
+
+        public void SetTempBitmap()
+        {
+            _tmpBitmap = (Bitmap)_mainBitmap.Clone();
+        }
+
+        public void AddFigure(AbstractFigure figure)
+        {
+            _figures.Add(figure);
+        }
+
+        public void DrawAll()
+        {
+            int width = Instanse.Width;
+            int height = Instanse.Height;
+            Instanse.SetBitmap(new Bitmap(width, height));
+
+
+            foreach (AbstractFigure fig in Instanse._figures)
+            {
+                var bitmap = fig.Mover.MoveFigure(fig.Color, fig.Width, fig.Points.ToArray());
+                Instanse.SetBitmap(bitmap);
+            }
+
+        }
+
+
+
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DrawMe.Drawing;
+using DrawMe.NewFolder1;
 using DrawMe.Solves;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace DrawMe.Figures
         {
             drawing = new DrawByLine();
             solves = new BrushSolve();
+            Mover = new MoveByLines();
         }
     }
 }

@@ -10,25 +10,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DrawMe.Canvases;
+using DrawMe.Actions;
 
 namespace DrawMe
 {
     public partial class Form1 : Form
     {
-        Bitmap _mainBM;
-        Bitmap _tmpBM;
-
         AbstractFigure _crntFigure;
         Color _crntColor;
         int _crntWidth;
         List<AbstractFigure> _figures;
         IFactory _factory;
-        Graphics graphics;
+
 
         string action;
         Pen pen;
-        Point prev;
+
         bool _MD;
+
+        IAction _action;
+
         public Form1()
         {
             InitializeComponent();
@@ -36,91 +37,55 @@ namespace DrawMe
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //_mainBM = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+
             Canvas.Instanse.SetBitmap(new Bitmap(pictureBox1.Width, pictureBox1.Height));
+            Canvas.Instanse.Height = pictureBox1.Height;
+            Canvas.Instanse.Width = pictureBox1.Width;
+            Canvas.Instanse._figures = new List<AbstractFigure>();
             
-            
-            
-            //_tmpBM = (Bitmap)_mainBM.Clone();
             _crntColor = Color.Black;
-            _crntWidth = 1;
+            _crntWidth = 5;
             _figures = new List<AbstractFigure>();
 
             _factory = new BrushFactory(); // на старте задаем кисть 
+            _action = new DrawAction();
 
             pen = new Pen(_crntColor, _crntWidth); // хз это наверно вообще не нужно
-            prev = new Point(0, 0);
             _MD = false;
-            action = "Draw";
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             if (_MD && _crntFigure != null)
             {
-                switch (action)
+                var actionParameter = new ActionParamter()
                 {
-                    case "Draw":
-                        pictureBox1.Image = Canvas.Instanse.GetBitmap();
-                        pictureBox1.Image = _crntFigure.Draw(e.Location);
-                        break;
-                    case "Mover":
-                        //pictureBox1.Image = Canvas.Instanse.GetBitmap();
-                        pictureBox1.Image= _crntFigure.Move(e.Location);
-                        break;
-                }
-                //pictureBox1.Image = Canvas.Instanse.GetBitmap();
-                //pictureBox1.Image = Canvas.Instanse.GetTempBitmap();
+                    Color = _crntColor,
+                    Point = e.Location,
+                    Width = _crntWidth,
+                    Factory = _factory
+                };
+
+                pictureBox1.Image = _action.OnMouseMove(_crntFigure, actionParameter);
             }
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
+            var actionParameter = new ActionParamter()
+            {
+                Color = _crntColor,
+                Point = e.Location,
+                Width = _crntWidth,
+                Factory = _factory
+            };
+
+             _action.OnMouseDown(out _crntFigure, actionParameter);
+            pictureBox1.Image = Canvas.Instanse.GetTempBitmap();
+
             _MD = true;
-            switch (action)
-            {
-                case "Draw":
-                    _crntFigure = _factory.CreateFigure();
-                    _crntFigure.Color = _crntColor;
-                    _crntFigure.Width = _crntWidth;
-                    _crntFigure.DoStart(e.Location);
-                    break;
-                case "Mover":
-                    
-                    _crntFigure = null;
-                    foreach (AbstractFigure figure in _figures)
-                    {
-                        if (figure.CheckFigure(e.Location))
-                        {
-                            _crntFigure = figure;
-                            _figures.Remove(_crntFigure);
-                            DrawAll();
-                            _crntFigure.DoStart(e.Location);
-                            break;
-                        }
-                    }
-                    break;
-                case "ChangeColor":
-                    _figures.Remove(_crntFigure);
-                    DrawAll();
-                    _crntFigure.ChangeColor(_crntColor, _mainBM);
-                    pictureBox1.Image = _crntFigure.ShowBit();
-                    break;
-            }
             
-        }
-
-        private void DrawAll()
-        {
-            Canvas.Instanse.SetBitmap(new Bitmap(pictureBox1.Width, pictureBox1.Height));
-
-
-            foreach (AbstractFigure figure in _figures)
-            {
-                Canvas.Instanse.SetBitmap(_crntFigure.drawing.DrawFigure(figure.Color, figure.Width, figure.Points.ToArray()));
-                
-            }
-
+            
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
@@ -131,7 +96,9 @@ namespace DrawMe
           
             if (_crntFigure != null && _crntFigure.CheckDraw())
             {
-                _figures.Add(_crntFigure);
+                //_figures.Add(_crntFigure);
+                Canvas.Instanse.AddFigure(_crntFigure);
+                //_figures = Canvas.Instanse._figures;
             }
             Canvas.Instanse.SetBitmap(Canvas.Instanse.GetTempBitmap());
         }
@@ -139,7 +106,7 @@ namespace DrawMe
         private void rightTraingle_Click(object sender, EventArgs e)
         {
             _factory = new RightTraingleFactory();
-            action = "Draw";
+            _action = new DrawAction();
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -156,24 +123,23 @@ namespace DrawMe
         private void button4_Click(object sender, EventArgs e)
         {
             _factory = new RectangleFactory();
-            action = "Draw";
-            //_crntFigure = new RectangleFigure();
-            //_crntFigure.Color = _crntColor;
-            //_crntFigure.Width = _crntWidth;
+            _action = new DrawAction();
         }
 
         private void isoscelesTraingle_Click(object sender, EventArgs e)
         {
             _factory = new IsoscelesTraingleFactory();
-            action = "Draw";
+            _action = new DrawAction();
 
         }
 
         private void clear_Click(object sender, EventArgs e)
         {
             Canvas.Instanse.SetBitmap(new Bitmap(pictureBox1.Width, pictureBox1.Height));
+            Canvas.Instanse.SetTempBitmap();
+            Canvas.Instanse._figures = new List<AbstractFigure>();
             pictureBox1.Image = Canvas.Instanse.GetBitmap();
-            _figures = new List<AbstractFigure>();
+            _action = new DrawAction();
         }
 
         private void widthBox_ValueChanged(object sender, EventArgs e)
@@ -183,74 +149,95 @@ namespace DrawMe
 
         private void mover_Click(object sender, EventArgs e)
         {
-            action = "Mover";
+            _action = new MoveAction();
         }
 
         private void line_Click(object sender, EventArgs e)
         {
             _factory = new LineFactory();
-            action = "Draw";
+            _action = new DrawAction();
         }
 
         private void changeColor_Click(object sender, EventArgs e)
         {
-            action = "ChangeColor";
+            _action = new ChangeColorAction();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             _factory = new SquareFactory();
-            action = "Draw";
+            _action = new DrawAction();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            _factory = new BrushFactory();
+            _action = new DrawAction();
         }
         // Color
         private void whiteSmoke_Click(object sender, EventArgs e)
         {
-            _crntColor = Color.WhiteSmoke;
+            _crntColor = ((Button)sender).BackColor;
         }
 
-        private void gainsboro_Click(object sender, EventArgs e)
+        private void rotate_Click(object sender, EventArgs e)
         {
-            _crntColor = Color.Gainsboro;
+            
         }
 
-        private void lightGray_Click(object sender, EventArgs e)
+        private void movePoint_Click(object sender, EventArgs e)
         {
-            _crntColor = Color.LightGray;
+            _action = new MovePointAction();
         }
 
-        private void silver_Click(object sender, EventArgs e)
+        private void save_Click(object sender, EventArgs e)
         {
-            _crntColor = Color.Silver;
+            if (pictureBox1.Image != null)
+            {
+                SaveFileDialog savedialog = new SaveFileDialog();
+                savedialog.Title = "Сохранить картинку как...";
+                savedialog.OverwritePrompt = true;
+                savedialog.CheckPathExists = true;
+                savedialog.ShowHelp = true;
+                savedialog.Filter = "Image Files(*.BMP)|*.BMP|Image Files(*.JPG)|*.JPG|Image Files(*.GIF)|*.GIF|Image Files(*.PNG)|*.PNG|All files (*.*)|*.*";
+                if (savedialog.ShowDialog() == DialogResult.OK) 
+                {
+                    try
+                    {
+                        pictureBox1.Image.Save(savedialog.FileName);
+                       
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Невозможно сохранить изображение", "Ошибка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
-        private void darkGray_Click(object sender, EventArgs e)
+        private void load_Click(object sender, EventArgs e)
         {
-            _crntColor = Color.DarkGray;
+            OpenFileDialog openDialog = new OpenFileDialog();
+            openDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
+            if (openDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                        Canvas.Instanse.SetBitmap(new Bitmap(openDialog.FileName));
+                    Canvas.Instanse.SetTempBitmap();
+                    pictureBox1.Image = Canvas.Instanse.GetBitmap();
+                }
+                catch
+                {
+                    MessageBox.Show("Не удалось", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
-        private void gray_Click(object sender, EventArgs e)
+        private void width_Click(object sender, EventArgs e)
         {
-            _crntColor = Color.Gray;
-        }
-
-        private void dimGray_Click(object sender, EventArgs e)
-        {
-            _crntColor = Color.DimGray;
-        }
-
-        private void black_Click(object sender, EventArgs e)
-        {
-            _crntColor = Color.Black;
-        }
-
-        private void white_Click(object sender, EventArgs e)
-        {
-            _crntColor = Color.White;
+            _action = new ChangeWidthAction();
         }
 
         private void button6_Click(object sender, EventArgs e)

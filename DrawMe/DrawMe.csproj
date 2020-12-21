@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\ChangeColorAction.cs" />
+    <Compile Include="Actions\ChangeWidthAction.cs" />
+    <Compile Include="Actions\DrawAction.cs" />
+    <Compile Include="Actions\IAction.cs" />
+    <Compile Include="Actions\MoveAction.cs" />
+    <Compile Include="Actions\MovePointAction.cs" />
     <Compile Include="Canvas\Canvas.cs" />
     <Compile Include="Drawing\DrawByEllipse.cs" />
     <Compile Include="Drawing\DrawByLine.cs" />
@@ -73,6 +79,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewFolder1\MoveByLines.cs" />
+    <Compile Include="NewFolder1\IMover.cs" />
+    <Compile Include="NewFolder1\MoveByPoligon.cs" />
     <Compile Include="Solves\BrushSolve.cs" />
     <Compile Include="Solves\CircleSolve.cs" />
     <Compile Include="Solves\ISolves.cs" />
@@ -109,7 +118,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="NewFolder1\" />
+    <Content Include="Trash\Trash.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

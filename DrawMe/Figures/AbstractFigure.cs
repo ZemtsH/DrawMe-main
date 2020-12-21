@@ -1,4 +1,5 @@
 ﻿using DrawMe.Drawing;
+using DrawMe.NewFolder1;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -15,7 +16,8 @@ namespace DrawMe.Figures
         public int Width { get; set; }
         public List<Point> Points { get; set; }
         public IDrawing drawing;
-        public ISolves solves;
+        protected ISolves solves;
+        public IMover Mover;
 
         public bool CheckDraw()
         {
@@ -27,6 +29,20 @@ namespace DrawMe.Figures
         }
 
         public bool CheckFigure(Point point)
+        {
+            Point prevP = Points[Points.Count - 1];
+            foreach (Point p in Points)
+            {
+                if (Contain(prevP, p, point, Width))
+                {
+                    return true;
+                }
+                prevP = p;
+            }
+            return false;
+        }
+
+        public bool CheckFigurePoint(Point point, Point eLoc)
         {
             Point prevP = Points[Points.Count - 1];
             foreach (Point p in Points)
@@ -54,23 +70,29 @@ namespace DrawMe.Figures
                 Point i = Points[p];
                 Points[p] = new Point(i.X + delta.X, i.Y + delta.Y);
             }
-            return drawing.DrawFigure(Color, Width, Points.ToArray());
+            return Mover.MoveFigure(Color, Width, Points.ToArray());
         }
 
-        public void ChangeColor(Color color, Bitmap mainBM)
+        public void ChangeColor(Color color)
         {
             Color = color;
-            drawing.DrawFigure(Color, Width, Points.ToArray());
+            Mover.MoveFigure(Color, Width, Points.ToArray());
         }
 
-        public Bitmap ShowBit()
+        public void ChangeWidth(int width)
         {
-            return drawing.crntBit;
+            Width = width;
+            Mover.MoveFigure(Color, Width, Points.ToArray());
         }
 
         public void DoStart(Point startPoint)
         {
             drawing.startPoint = startPoint;
+        }
+
+        public void DoStartM(Point startPoint)
+        {
+            Mover.startPoint = startPoint;
         }
 
 
@@ -94,6 +116,14 @@ namespace DrawMe.Figures
                 return true;
             else return false;
         }
-        
+
+        public bool CheckInsidePoint(Point point, Point eLoc)
+        {
+            if ( (eLoc.X >= (point.X-Width*2)) && (eLoc.X <= (point.X + Width*2)) && (eLoc.Y >= (point.Y-Width*2)) && (eLoc.Y <= (point.Y + Width*2)) )
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
