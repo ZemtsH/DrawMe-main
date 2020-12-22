@@ -245,5 +245,17 @@ namespace DrawMe
             _factory = new CircleFactory();
             action = "Draw";
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            _factory = new CircleTrueFactory();
+            action = "Draw";
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            _factory = new PolygonFactory();
+            action = "Draw";
+        }
     }
 }
