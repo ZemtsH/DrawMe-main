@@ -12,7 +12,7 @@ namespace DrawMe.Actions
 {
     public interface IAction
     {
-        Bitmap OnMouseMove( AbstractFigure figure, ActionParamter paramter);
+        void OnMouseMove( AbstractFigure figure, ActionParamter paramter);
         void OnMouseDown(out AbstractFigure figure, ActionParamter paramter);
         void OnMouseUp( AbstractFigure figure, ActionParamter paramter);
 

@@ -90,11 +90,6 @@ namespace DrawMe.Figures
             drawing.startPoint = startPoint;
         }
 
-        public void DoStartM(Point startPoint)
-        {
-            Mover.startPoint = startPoint;
-        }
-
 
         private bool Contain(Point start, Point end, Point checkPoint, double accuracy)
         {

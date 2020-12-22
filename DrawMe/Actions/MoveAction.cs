@@ -25,33 +25,20 @@ namespace DrawMe.Actions
                     break;
                 }
             }
-
         }
 
-        public Bitmap OnMouseMove(AbstractFigure figure, ActionParamter paramter)
+        public void OnMouseMove(AbstractFigure figure, ActionParamter paramter)
         {
-            return figure.Move(paramter.Point); ;
+            figure.Move(paramter.Point); ;
         }
 
         public void OnMouseUp(AbstractFigure figure, ActionParamter paramter)
         {
-            throw new NotImplementedException();
+            if (figure != null && figure.CheckDraw())
+            {
+                Canvas.Instanse.AddFigure(figure);
+            }
+            Canvas.Instanse.SetBitmap(Canvas.Instanse.GetTempBitmap());
         }
-
-        //private void DrawAll()
-        //{
-        //    int width = Canvas.Instanse.Width;
-        //    int height = Canvas.Instanse.Height;
-        //    Canvas.Instanse.SetBitmap(new Bitmap(width, height));
-
-
-        //    foreach (AbstractFigure fig in Canvas.Instanse._figures)
-        //    {
-        //        var bitmap = fig.Mover.MoveFigure(fig.Color, fig.Width, fig.Points.ToArray());
-        //        Canvas.Instanse.SetBitmap(bitmap);
-
-        //    }
-
-        //}
     }
 }

@@ -35,21 +35,25 @@ namespace DrawMe.Actions
             }
         }
 
-        public Bitmap OnMouseMove(AbstractFigure figure, ActionParamter paramter)
+        public void OnMouseMove(AbstractFigure figure, ActionParamter paramter)
         {
             if (figure != null)
             {
                 Color color = figure.Color;
                 int width = figure.Width;
                 figure.Points[indPoint] = paramter.Point;
-                return figure.Mover.MoveFigure(color, width, figure.Points.ToArray());
+                figure.Mover.MoveFigure(color, width, figure.Points.ToArray());
             }
-            return Canvas.Instanse.GetBitmap();
+            Canvas.Instanse.GetBitmap();
         }
 
         public void OnMouseUp(AbstractFigure figure, ActionParamter paramter)
         {
-            throw new NotImplementedException();
+            if (figure != null && figure.CheckDraw())
+            {
+                Canvas.Instanse.AddFigure(figure);
+            }
+            Canvas.Instanse.SetBitmap(Canvas.Instanse.GetTempBitmap());
         }
 
         
