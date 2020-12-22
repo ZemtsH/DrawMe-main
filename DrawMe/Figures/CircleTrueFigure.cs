@@ -16,7 +16,7 @@ namespace DrawMe.Figures
         public CircleTrueFigure()
         {
             drawing = new DrawByPoligon();
-            solves = new CircleSolves();
+            solves = new CircleTrueSolves();
         }
     }
 

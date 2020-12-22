@@ -15,19 +15,16 @@ namespace DrawMe.Solves
     {
         public Point[] DoPoint(Point[] points)
         {
-            
-            int del = points[1].Y - points[0].Y;
-
 
             int num_theta = 360;
-            int cx = points[0].X;
-            int cy = points[0].Y;
-            int rx = (points[0].X + del);
-            int ry = points[1].Y;
+            float cx = Math.Abs(points[0].X - points[1].X) / 2;
+            float cy = Math.Abs(points[0].Y - points[1].Y) / 2;
+            float rx = Math.Min(cx, cy) - 10;
+            float ry = rx;
             List<Point> finalPoints = new List<Point>();
             float dtheta = (float)(2 * Math.PI / num_theta);
             float theta = 0;
-            double r = Math.Sqrt((cx - rx) ^ 2 + (cy - ry) ^ 2);
+            
             for (int i = 0; i < num_theta; i++)
             {
                 int x = (int)(cx + rx * Math.Cos(theta));

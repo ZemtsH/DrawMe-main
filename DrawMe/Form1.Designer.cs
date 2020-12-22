@@ -383,7 +383,7 @@
             // 
             // movePoint
             // 
-            this.movePoint.Location = new System.Drawing.Point(399, 88);
+            this.movePoint.Location = new System.Drawing.Point(420, 88);
             this.movePoint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.movePoint.Name = "movePoint";
             this.movePoint.Size = new System.Drawing.Size(216, 61);

@@ -11,7 +11,7 @@ namespace DrawMe.Factory
     {
         public AbstractFigure CreateFigure()
         {
-            return new CircleFigure();
+            return new CircleTrueFigure();
         }
     }
 }
